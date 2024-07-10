@@ -5,9 +5,10 @@ public class MouseMovement : MonoBehaviour
 {
     private PlayerMovement playerInput;
     //public InputAction playerInput;
-    public float mouseSensitivity = 100f;
+    float mouseSensitivity = 90f;
     public Transform playerBody;
     float xRotation = 0f;
+
     // Start is called before the first frame update
 
     private void Awake()
