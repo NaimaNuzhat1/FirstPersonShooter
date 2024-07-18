@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 public class MouseMovement : MonoBehaviour
 {
     private PlayerMovement playerInput;
-    //public InputAction playerInput;
-    float mouseSensitivity = 90f;
+
+    float mouseSensitivity = 60f;
     public Transform playerBody;
     float xRotation = 0f;
 
@@ -32,16 +32,22 @@ public class MouseMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 cameraLook= playerInput.Touch.LookAround.ReadValue<Vector2>();
+     
+    
+    }
+
+    private void LateUpdate()
+    {
+        Vector2 cameraLook = playerInput.Touch.LookAround.ReadValue<Vector2>();
         float mouseX = cameraLook.x * mouseSensitivity * Time.deltaTime;
         float mouseY = cameraLook.y * mouseSensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
         playerBody.Rotate(Vector3.up * mouseX);
-    
-    
+
     }
 }
